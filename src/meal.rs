@@ -1,11 +1,7 @@
-// TODO: Remove once functions implemented
-#[allow(dead_code)]
-type Minutes = u8;
+pub type Minutes = u8;
 
-// TODO: Remove once functions implemented
-#[allow(dead_code)]
 #[derive(Debug, PartialEq)]
-enum Difficulty {
+pub enum Difficulty {
     Hard,
     Medium,
     Easy,
@@ -13,12 +9,29 @@ enum Difficulty {
 
 // TODO: Remove once functions implemented
 #[allow(dead_code)]
-struct Meal {
+#[derive(Debug)]
+pub struct Meal {
     name: String,
     cuisine_type: String,
     ingredients: Vec<String>,
     difficulty: Difficulty,
     time: Minutes,
+}
+
+impl Meal {
+    /// Most components of a `Meal` can be inferred by translating a string, except
+    /// for `Meal.ingredients`. Although we could separate on commas, I felt more
+    /// appropriate to pass in a HashMap `metadata` and a Vec<String> `ingredients`.
+    /// I'm open for better ways of passing this information!
+    pub fn new(metadata: std::collections::HashMap<String, String>, ingredients: Vec<String>) -> Self {
+        Meal {
+            name: metadata.get("name").unwrap().to_owned(),
+            cuisine_type: metadata.get("cuisine_type").unwrap().to_owned(),
+            ingredients,
+            difficulty: Difficulty::Easy,
+            time: metadata.get("time").unwrap().to_owned().parse::<u8>().unwrap(),
+        }
+    }
 }
 
 #[cfg(test)]

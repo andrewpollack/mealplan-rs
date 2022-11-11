@@ -1,1 +1,1 @@
-mod meal;
+pub mod meal;
