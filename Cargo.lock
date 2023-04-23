@@ -369,9 +369,17 @@ dependencies = [
 [[package]]
 name = "mealplan-rs"
 version = "0.1.0"
+
+[[package]]
+name = "mealplan_app"
+version = "0.1.0"
 dependencies = [
  "yew",
 ]
+
+[[package]]
+name = "mealplan_server"
+version = "0.1.0"
 
 [[package]]
 name = "memchr"

@@ -1,0 +1,1 @@
+// Structs will go here.
